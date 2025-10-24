@@ -1,6 +1,6 @@
 <h1 align="center">Generative Reasoning Recommendation via LLMs</h1>
 
-This repository contains the official implementation for the paper "Generative Reasoning Recommendation via LLMs".
+This repository contains the official implementation for the paper ["Generative Reasoning Recommendation via LLMs".](https://arxiv.org/pdf/2510.20815)
 
 ## Introduction
 
@@ -12,7 +12,7 @@ semantics and collaborative filtering signals, combined with the
 sparsity and stochasticity of user feedback, presents significant
 obstacles. This work explores how to build GRRMs by adapting pre-trained
 LLMs, which achieves a unified *understanding-reasoning-prediction*
-manner for recommendation tasks. Towards this, we propose , an
+manner for recommendation tasks. Towards this, we propose **GREAM**, an
 end-to-end framework that integrates three components: (i)
 **Collaborative-Semantic Alignment**, which fuses heterogeneous textual
 evidence to construct semantically consistent, discrete item indices and
