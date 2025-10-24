@@ -24,6 +24,22 @@
       "system": "system"
     }
   },
+  "beauty-mix": {
+    "file_name": "Beauty-mix.parquet",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "conversations",
+      "system": "system"
+    }
+  },
+  "sports-mix": {
+    "file_name": "Sports-mix.parquet",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "conversations",
+      "system": "system"
+    }
+  },
   "glaive_toolcall_zh_demo": {
     "file_name": "glaive_toolcall_zh_demo.json",
     "formatting": "sharegpt",

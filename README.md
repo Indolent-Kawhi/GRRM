@@ -49,19 +49,22 @@ Set up your environment with the required packages.
 
 ## Data Preparation
 
-You can download data from [here](https://huggingface.co/datasets/Frywind/POLM_data). Put `data.zip` under this directory and put `sft_data.zip` under `LLaMA-Factory/data/`. Then unzip them.
+You can download data from [here](https://huggingface.co/datasets/Frywind/GREAM_data). Put `data.zip` under this directory and put `sft_data.zip` under `LLaMA-Factory/data/`. Then unzip them.
 
    You can refer to `data_processing/` for instructions on how to prepare your dataset.
 
 ## SFT Training
 
 We use `LLaMA-Factory`. Please refer to their [repository](./LLaMA-Factory) for more details. 
+You need to run `scripts/construct_model.py` to get Qwen3-4B-Instruct with extended vocabulary before sft training. Then use following commands to train on instruments:
 
-You need to run `scripts/construct_model.py` to get Qwen3-4B-Instruct with extended vocabulary before sft training.
+```bash
+llamafactory-cli train examples/train_full/qwen3-4b-mix.yaml
+```
 
 ## RL Training
 
-
+Update the configuration in `scripts/run.sh`, then run:
 
 ```bash
 bash scripts/run.sh
