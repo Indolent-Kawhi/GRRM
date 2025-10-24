@@ -1,5 +1,9 @@
 <h1 align="center">Generative Reasoning Recommendation via LLMs</h1>
 
+<p align="center">
+<strong><a href="https://arxiv.org/abs/2510.20815">📃Paper<a> | <a href="https://huggingface.co/Frywind/GREAM">🤗Models</a> | <a href="https://huggingface.co/datasets/Frywind/GREAM_data">🤗Datasets</a></strong>
+</p>
+
 This repository contains the official implementation for the paper ["Generative Reasoning Recommendation via LLMs".](https://arxiv.org/pdf/2510.20815)
 
 ## Introduction
