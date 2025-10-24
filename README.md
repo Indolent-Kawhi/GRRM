@@ -6,44 +6,40 @@
 
 This repository contains the official implementation for the paper ["Generative Reasoning Recommendation via LLMs".](https://arxiv.org/pdf/2510.20815)
 
-## Introduction
+## 🧩 Introduction
 
-Despite their remarkable reasoning capabilities across diverse domains,
-large language models (LLMs) face fundamental challenges in natively
-functioning as **g**enerative **r**easoning **r**ecommendation
-**m**odels (**GRRMs**), where the intrinsic modeling gap between textual
-semantics and collaborative filtering signals, combined with the
-sparsity and stochasticity of user feedback, presents significant
-obstacles. This work explores how to build GRRMs by adapting pre-trained
-LLMs, which achieves a unified *understanding-reasoning-prediction*
-manner for recommendation tasks. Towards this, we propose **GREAM**, an
-end-to-end framework that integrates three components: (i)
-**Collaborative-Semantic Alignment**, which fuses heterogeneous textual
-evidence to construct semantically consistent, discrete item indices and
-auxiliary alignment tasks that ground linguistic representations in
-interaction semantics; (ii) **Reasoning Curriculum Activation**, which
-builds a synthetic dataset with explicit Chain-of-Thought supervision
-and a curriculum that progresses through behavioral evidence extraction,
-latent preference modeling, intent inference, recommendation
-formulation, and denoised sequence rewriting; and (iii)
-**Sparse-Regularized Group Policy Optimization (SRPO)**, which
-stabilizes post-training via *Residual-Sensitive Verifiable Reward* and
-*Bonus-Calibrated Group Advantage Estimation*, enabling end-to-end
-optimization under verifiable signals despite sparse successes. Distinct
-from prior LLM recommenders that trade off efficiency for
-interpretability, natively supports two complementary inference modes:
-*Direct Sequence Recommendation* for high-throughput, low-latency
-deployment, and *Sequential Reasoning Recommendation* that first emits
-an interpretable reasoning chain for causal transparency. Extensive
-experiments on three public benchmarks show consistent gains over strong
-generative and LLM baselines in both direct and reasoning settings. The
-results demonstrate that achieves a balanced trade-off among efficiency,
-accuracy, and end-to-end interpretability, providing a practical path
-for verifiable-RL-driven LLM recommenders.
+Large Language Models (LLMs) demonstrate remarkable reasoning abilities across many domains, yet they face **fundamental challenges** in functioning as **Generative Reasoning Recommendation Models (GRRMs)**.  
+
+These challenges arise from the **modeling gap between textual semantics and collaborative filtering signals**, as well as the **sparsity and stochasticity of user feedback**.
+
+To address this, we introduce **GREAM** — an end-to-end generative reasoning recommendation framework that unifies *understanding, reasoning,* and *prediction* for recommendation tasks.
 
 <img src="assets/framework.png" alt="framework">
 
-## Installation
+### 🔍 Overview of GREAM
+
+GREAM integrates three key components:
+
+1. **Collaborative–Semantic Alignment**  
+   Fuses heterogeneous textual evidence (titles, descriptions, reviews) to construct **semantically consistent discrete item indices**, aligning linguistic and interaction semantics.
+
+2. **Reasoning Curriculum Activation**  
+   Builds a synthetic **Chain-of-Thought (CoT)** dataset and trains via a progressive curriculum of:
+   - Behavioral evidence extraction  
+   - Latent preference modeling  
+   - Intent inference  
+   - Recommendation formulation  
+   - Denoised sequence rewriting  
+
+3. **Sparse-Regularized Group Policy Optimization (SRPO)**  
+   A novel reinforcement learning method combining:
+   - *Residual-Sensitive Verifiable Reward (RSVR)*  
+   - *Bonus-Calibrated Group Advantage Estimation (BGAE)*  
+   Enabling stable and verifiable fine-tuning under sparse signals.
+
+---
+
+## ⚙️ Installation
 
 Set up your environment with the required packages.
 
@@ -51,13 +47,13 @@ Set up your environment with the required packages.
    bash scripts/install.sh
    ```
 
-## Data Preparation
+## 📦 Data Preparation
 
 You can download data from [here](https://huggingface.co/datasets/Frywind/GREAM_data). Put `data.zip` under this directory and put `sft_data.zip` under `LLaMA-Factory/data/`. Then unzip them.
 
    You can refer to `data_processing/` for instructions on how to prepare your dataset.
 
-## SFT Training
+## 🧠 SFT (Supervised Fine-Tuning)
 
 We use `LLaMA-Factory`. Please refer to their [repository](./LLaMA-Factory) for more details. 
 You need to run `scripts/construct_model.py` to get Qwen3-4B-Instruct with extended vocabulary before sft training. Then use following commands to train on instruments:
@@ -66,7 +62,7 @@ You need to run `scripts/construct_model.py` to get Qwen3-4B-Instruct with exten
 llamafactory-cli train examples/train_full/qwen3-4b-mix.yaml
 ```
 
-## RL Training
+## 🧩 RL Training
 
 Update the configuration in `scripts/run.sh`, then run:
 
@@ -74,7 +70,9 @@ Update the configuration in `scripts/run.sh`, then run:
 bash scripts/run.sh
 ```
 
-## Evaluation
+This phase applies SRPO (Sparse-Regularized Group Policy Optimization) for verifiable post-training refinement.
+
+## 📊 Evaluation
 
 To evaluate the model on Amazon datasets, run:
 
@@ -108,6 +106,7 @@ To evaluate the model on Amazon datasets, run:
    ```
 
 ## Citation
+If you find this work helpful, please cite:
 ```
 @misc{hong2025generativereasoningrecommendationllms,
       title={Generative Reasoning Recommendation via LLMs}, 
