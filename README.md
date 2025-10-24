@@ -53,13 +53,15 @@ You can download data from [here](https://huggingface.co/datasets/Frywind/POLM_d
 
    You can refer to `data_processing/` for instructions on how to prepare your dataset.
 
-## Training
+## SFT Training
 
-For sft training, we use `LLaMA-Factory`. Please refer to their [repository](./LLaMA-Factory) for more details. 
+We use `LLaMA-Factory`. Please refer to their [repository](./LLaMA-Factory) for more details. 
 
-   You need to run `scripts/construct_model.py` to get Qwen3-4B-Instruct with extended vocabulary before sft training.
+You need to run `scripts/construct_model.py` to get Qwen3-4B-Instruct with extended vocabulary before sft training.
 
-For rl training, update the configuration in `scripts/run.sh`, then run:
+## RL Training
+
+
 
 ```bash
 bash scripts/run.sh
@@ -97,3 +99,16 @@ To evaluate the model on Amazon datasets, run:
       --test_task seqrec-rl \
       --test_prompt_ids 5
    ```
+
+## Citation
+```
+@misc{hong2025generativereasoningrecommendationllms,
+      title={Generative Reasoning Recommendation via LLMs}, 
+      author={Minjie Hong and Zetong Zhou and Zirun Guo and Ziang Zhang and Ruofan Hu and Weinan Gan and Jieming Zhu and Zhou Zhao},
+      year={2025},
+      eprint={2510.20815},
+      archivePrefix={arXiv},
+      primaryClass={cs.IR},
+      url={https://arxiv.org/abs/2510.20815}, 
+}
+```
